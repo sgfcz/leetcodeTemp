@@ -62,8 +62,19 @@ public:
     
     int next(int price) {
         _prices.push_back(price);
-        
-        return 2;
+        if (_prices.size() == 1) {
+            return 1;
+        }
+
+        int count = 0;
+        for (int pricef : _prices) {
+            if (pricef <= price) {
+                count++;
+            } else {
+                count = 0;
+            }
+        }
+        return count;
     }
     vector<int> _prices;
 };
